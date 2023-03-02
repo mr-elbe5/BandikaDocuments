@@ -20,6 +20,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.util.Base64;
 
 public class PdfCreator {
 
@@ -88,10 +89,10 @@ public class PdfCreator {
         }
     }
 
-    /*protected String getBase64SrcString(BinaryFile file){
+    protected String getBase64SrcString(BinaryFile file){
         StringBuilder sb = new StringBuilder("data:").append(file.getContentType()).append(";base64,");
         sb.append(Base64.getEncoder().encodeToString(file.getBytes()));
         return sb.toString();
-    }*/
+    }
 
 }
