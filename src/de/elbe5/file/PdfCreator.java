@@ -12,7 +12,6 @@ import de.elbe5.application.ApplicationPath;
 import de.elbe5.base.BinaryFile;
 import de.elbe5.base.Log;
 import de.elbe5.base.StringHelper;
-import de.elbe5.database.DbBean;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
@@ -21,15 +20,14 @@ import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.util.Base64;
 
-public class FopBean extends DbBean {
+public class PdfCreator {
 
-    private static FopBean instance = null;
+    private static PdfCreator instance = null;
 
-    public static FopBean getInstance() {
+    public static PdfCreator getInstance() {
         if (instance == null) {
-            instance = new FopBean();
+            instance = new PdfCreator();
         }
         return instance;
     }
@@ -90,10 +88,10 @@ public class FopBean extends DbBean {
         }
     }
 
-    protected String getBase64SrcString(BinaryFile file){
+    /*protected String getBase64SrcString(BinaryFile file){
         StringBuilder sb = new StringBuilder("data:").append(file.getContentType()).append(";base64,");
         sb.append(Base64.getEncoder().encodeToString(file.getBytes()));
         return sb.toString();
-    }
+    }*/
 
 }

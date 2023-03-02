@@ -15,13 +15,13 @@ import de.elbe5.database.DbBean;
 import java.io.IOException;
 import java.io.StringWriter;
 
-public class CsvBean extends DbBean {
+public class CsvCreator extends DbBean {
 
-    private static CsvBean instance = null;
+    private static CsvCreator instance = null;
 
-    public static CsvBean getInstance() {
+    public static CsvCreator getInstance() {
         if (instance == null) {
-            instance = new CsvBean();
+            instance = new CsvCreator();
         }
         return instance;
     }

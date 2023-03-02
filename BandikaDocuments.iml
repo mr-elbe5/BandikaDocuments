@@ -20,5 +20,6 @@
     <orderEntry type="module" module-name="BandikaBase" exported="" />
     <orderEntry type="module" module-name="BandikaWebBase" exported="" />
     <orderEntry type="library" exported="" name="fop" level="project" />
+    <orderEntry type="library" exported="" name="poi" level="project" />
   </component>
 </module>
