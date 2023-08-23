@@ -18,7 +18,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="baselibs" level="project" />
     <orderEntry type="module" module-name="BandikaBase" exported="" />
-    <orderEntry type="module" module-name="BandikaWebBase" exported="" />
     <orderEntry type="library" exported="" name="fop" level="project" />
     <orderEntry type="library" exported="" name="poi" level="project" />
   </component>
