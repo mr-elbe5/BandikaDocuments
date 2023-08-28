@@ -12,6 +12,7 @@ import de.elbe5.application.ApplicationPath;
 import de.elbe5.base.BinaryFile;
 import de.elbe5.base.Log;
 import de.elbe5.base.StringHelper;
+import org.apache.commons.logging.LogFactory;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
@@ -44,7 +45,7 @@ public class PdfCreator {
         }
         byte[] pdf = null;
         try {
-            File confFile = new File(basePath+"/fop.xconf");
+            File confFile = new File(basePath+"/WEB-INF/fop.xconf");
             FopFactory fopFactory=FopFactory.newInstance(confFile);
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
             ByteArrayOutputStream out = new ByteArrayOutputStream();
