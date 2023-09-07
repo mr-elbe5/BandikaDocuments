@@ -9,10 +9,7 @@
 package de.elbe5.file;
 
 import de.elbe5.application.ApplicationPath;
-import de.elbe5.base.BinaryFile;
-import de.elbe5.base.Log;
-import de.elbe5.base.StringHelper;
-import org.apache.commons.logging.LogFactory;
+import de.elbe5.base.*;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
@@ -21,6 +18,8 @@ import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Base64;
 
 public class PdfCreator {
@@ -36,6 +35,22 @@ public class PdfCreator {
 
     protected String xml(String src){
         return StringHelper.toXml(src);
+    }
+
+    protected String sxml(String src){
+        return LocalizedStrings.xml(src);
+    }
+
+    protected String html(String src){
+        return StringHelper.toHtml(src);
+    }
+
+    protected String html(LocalDateTime date){
+        return DateHelper.toHtml(date);
+    }
+
+    protected String html(LocalDate date){
+        return DateHelper.toHtmlDate(date);
     }
 
     public byte[] generatePdf(String basePath, String xml, Templates xslTemplates) {
