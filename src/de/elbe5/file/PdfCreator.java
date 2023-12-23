@@ -38,7 +38,7 @@ public class PdfCreator {
     }
 
     protected String sxml(String src){
-        return LocalizedStrings.xml(src);
+        return LocalizedStrings.getInstance().xml(src);
     }
 
     protected String html(String src){
