@@ -33,6 +33,23 @@ public class PdfCreator {
         return instance;
     }
 
+    protected StringBuilder sb = new StringBuilder("<root>");
+
+    public PdfCreator add(String s){
+        sb.append(s);
+        return this;
+    }
+
+    public PdfCreator add(int i){
+        sb.append(i);
+        return this;
+    }
+
+    protected String finishXml(){
+        sb.append("</root>");
+        return sb.toString();
+    }
+
     protected String xml(String src){
         return StringHelper.toXml(src);
     }
