@@ -24,16 +24,12 @@ import java.util.Base64;
 
 public class PdfCreator {
 
-    private static PdfCreator instance = null;
-
-    public static PdfCreator getInstance() {
-        if (instance == null) {
-            instance = new PdfCreator();
-        }
-        return instance;
-    }
-
     protected StringBuilder sb = new StringBuilder("<root>");
+
+    public PdfCreator startXml(){
+        add("<root>");
+        return this;
+    }
 
     public PdfCreator add(String s){
         sb.append(s);
@@ -45,7 +41,12 @@ public class PdfCreator {
         return this;
     }
 
-    protected String finishXml(){
+    public PdfCreator finishXml(){
+        sb.append("</root>");
+        return this;
+    }
+
+    public String getXml(){
         sb.append("</root>");
         return sb.toString();
     }
