@@ -9,15 +9,23 @@
 package de.elbe5.file;
 
 import com.opencsv.CSVWriter;
+import de.elbe5.base.BinaryFile;
+import de.elbe5.base.DateHelper;
+import de.elbe5.base.LocalizedStrings;
 import de.elbe5.base.StringHelper;
-import de.elbe5.database.DbBean;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
-public class CsvCreator extends DbBean {
+public class CsvCreator {
 
     private static CsvCreator instance = null;
+
+    public static char separator = ';';
 
     public static CsvCreator getInstance() {
         if (instance == null) {
@@ -26,13 +34,25 @@ public class CsvCreator extends DbBean {
         return instance;
     }
 
-    protected String xml(String src){
-        return StringHelper.toXml(src);
+    protected String csv(String src){
+        return StringHelper.toCsv(src);
+    }
+
+    protected String scsv(String src){
+        return LocalizedStrings.getInstance().csv(src);
+    }
+
+    protected String csv(LocalDateTime date){
+        return csv(DateHelper.toHtml(date));
+    }
+
+    protected String csv(LocalDate date){
+        return csv(DateHelper.toHtmlDate(date));
     }
 
     public String createCSV(){
         StringWriter sw = new StringWriter();
-        CSVWriter csvWriter = new CSVWriter(sw);
+        CSVWriter csvWriter = new CSVWriter(sw, separator, '"', '\\', "\n");
         writeContent(csvWriter);
         try {
             csvWriter.close();
@@ -51,4 +71,19 @@ public class CsvCreator extends DbBean {
         writer.writeNext(strings);
     }
 
+    public void writeLine(CSVWriter writer, List<String> strings){
+        String[] arr = new String[strings.size()];
+        for (int i=0;i<strings.size();i++)
+            arr[i]=strings.get(i);
+        writer.writeNext(arr);
+    }
+
+    public BinaryFile getCsv(String csv, String fileName) {
+        BinaryFile file=new BinaryFile();
+        file.setFileName(fileName);
+        file.setContentType("text/csv");
+        file.setBytes(csv.getBytes(StandardCharsets.UTF_8));
+        file.setFileSize(file.getBytes().length);
+        return file;
+    }
 }
