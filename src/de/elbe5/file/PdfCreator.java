@@ -59,15 +59,11 @@ public class PdfCreator {
         return LocalizedStrings.getInstance().xml(src);
     }
 
-    protected String html(String src){
-        return StringHelper.toHtml(src);
-    }
-
-    protected String html(LocalDateTime date){
+    protected String xml(LocalDateTime date){
         return DateHelper.toHtml(date);
     }
 
-    protected String html(LocalDate date){
+    protected String xml(LocalDate date){
         return DateHelper.toHtmlDate(date);
     }
 
