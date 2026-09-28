@@ -50,10 +50,10 @@ public class CsvCreator {
         return csv(DateHelper.toHtmlDate(date));
     }
 
-    public String createCSV(){
+    public String createCSV(List<Integer> ids){
         StringWriter sw = new StringWriter();
         CSVWriter csvWriter = new CSVWriter(sw, separator, '"', '\\', "\n");
-        writeContent(csvWriter);
+        writeContent(csvWriter, ids);
         try {
             csvWriter.close();
         }
@@ -63,7 +63,7 @@ public class CsvCreator {
         return sw.toString();
     }
 
-    public void writeContent(CSVWriter writer){
+    public void writeContent(CSVWriter writer, List<Integer> ids){
         writeLine(writer, "first", "second", "third");
     }
 
